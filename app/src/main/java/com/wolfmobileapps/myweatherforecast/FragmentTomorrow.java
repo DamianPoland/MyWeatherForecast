@@ -2,7 +2,6 @@ package com.wolfmobileapps.myweatherforecast;
 
 
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;

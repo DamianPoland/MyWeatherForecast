@@ -2,13 +2,13 @@ package com.wolfmobileapps.myweatherforecast;
 
 public class ItemsToArrayAdapter {
 
-    String day;
-    String date;
-    String temp;
-    String icon;
-    String description;
-    String pressure;
-    String wind;
+    private String day;
+    private String date;
+    private String temp;
+    private String icon;
+    private String description;
+    private String pressure;
+    private String wind;
 
 
 

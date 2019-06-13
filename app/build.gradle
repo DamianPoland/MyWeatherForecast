@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('D:\\JAVA\\archiwum\\keystore_klucz_do_aplikacji.jks')
+            storePassword 'Ninja1'
+            keyAlias = 'key1'
+            keyPassword 'Ninja1555'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.wolfmobileapps.myweatherforecast"
@@ -12,8 +20,12 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.debug
         }
     }
 }

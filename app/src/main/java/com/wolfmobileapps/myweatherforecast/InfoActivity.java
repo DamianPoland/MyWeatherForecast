@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class InfoActivity extends AppCompatActivity {
     private static final String TAG = "InfoActivity";
 
-    TextView textViewVersionName;
+    private TextView textViewVersionName;
     private LinearLayout version;
     private LinearLayout faq;
     private LinearLayout source;
