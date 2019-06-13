@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    tools:context=".FragmentTomorrow"
+    android:id="@+id/fragmentTomorrow">
+
+
+    <ScrollView
+        android:id="@+id/scrollViewForColourChangeTomorrow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/textViewCityTomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="City"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewDayTomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/tomorrow"
+                android:textColor="@color/colorWhite"
+                android:textSize="32sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCityTomorrow" />
+
+            <TextView
+                android:id="@+id/textViewDateTomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/date"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewDayTomorrow"
+                app:layout_constraintStart_toEndOf="@+id/textViewDayTomorrow"
+                app:layout_constraintTop_toTopOf="@+id/textViewDayTomorrow" />
+
+            <TextView
+                android:id="@+id/textViewTemperatureTomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="20°"
+                android:textColor="@color/colorWhite"
+                android:textSize="90sp"
+                app:layout_constraintStart_toStartOf="@+id/textViewDayTomorrow"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDayTomorrow" />
+
+            <TextView
+                android:id="@+id/textViewMaxTempTomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20°"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/textView5Tomorrow"
+                app:layout_constraintTop_toBottomOf="@+id/textView5Tomorrow" />
+
+            <TextView
+                android:id="@+id/textViewMinTempTomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20°"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/textViewMaxTempTomorrow"
+                app:layout_constraintTop_toBottomOf="@+id/textView6Tomorrow" />
+
+            <ImageView
+                android:id="@+id/imageViewSkyIconTomorrow"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/question_weather"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewTemperatureTomorrow" />
+
+            <TextView
+                android:id="@+id/textViewSkyDescriptionTomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="description"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewSkyIconTomorrow"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewSkyIconTomorrow" />
+
+            <TextView
+                android:id="@+id/textView5Tomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Max."
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/textViewTemperatureTomorrow"
+                app:layout_constraintTop_toTopOf="@+id/textViewTemperatureTomorrow" />
+
+            <TextView
+                android:id="@+id/textView6Tomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Min."
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/textViewMinTempTomorrow"
+                app:layout_constraintTop_toBottomOf="@+id/textViewMaxTempTomorrow" />
+
+            <ImageView
+                android:id="@+id/imageViewWindTomorrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/wind"
+                app:layout_constraintStart_toStartOf="@+id/textViewTemperatureTomorrow"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSkyDescriptionTomorrow" />
+
+            <TextView
+                android:id="@+id/textViewWindTomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/wind"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/imageViewWindTomorrow"
+                app:layout_constraintTop_toTopOf="@+id/imageViewWindTomorrow" />
+
+            <ImageView
+                android:id="@+id/imageViewPressureTomorrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/pressure"
+                app:layout_constraintEnd_toStartOf="@+id/textViewPreasureTomorrow"
+                app:layout_constraintTop_toTopOf="@+id/imageViewWindTomorrow" />
+
+            <TextView
+                android:id="@+id/textViewPreasureTomorrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/pressure"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageViewPressureTomorrow" />
+
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+
+</android.support.constraint.ConstraintLayout>

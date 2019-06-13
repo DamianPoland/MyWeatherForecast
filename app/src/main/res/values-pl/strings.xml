@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Moja Prognoza Pogody</string>
+    <string name="app_description">1. Bez zaakceptowania pozwolenia aplikacja nie będzie działać!  \n\n2. Bez włączonego GPSa pozycja nie będzie aktualizowana. Prognoza pogody będzie aktualizowana względem ostatniej znanej pozycji.</string>
+    <string name="date">Data</string>
+    <string name="description">Opis</string>
+    <string name="disabled_gps">GPS jest wyłączony</string>
+    <string name="error_not_respond">Nie można odświeżyć danych. Spróbuj później</string>
+    <string name="general">Ogólne</string>
+    <string name="location_not_available">Lokalizacja nie jest osiągalna</string>
+    <string name="next_days_temperature">Temperatura w następnych dniach</string>
+    <string name="no_internet_connection">Brak połączenia internetowego</string>
+    <string name="permission_not_accepted">Pozwolenia nie zaakceptowane</string>
+    <string name="permissions_not_accepted_view">Bez zaakceptowania pozwoleń aplikacja nie będzie działać. Włącz aplikacje ponownie i zaakceptuj pozwolenia.</string>
+    <string name="pressure">Ciśnienie</string>
+    <string name="refresh_menu">Odśwież</string>
+    <string name="save_city_name">Zapisz</string>
+    <string name="settings">Ustawienia</string>
+    <string name="sunrise">Wschód:</string>
+    <string name="sunset">Zachód:</string>
+    <string name="tab_text_1">Dziś</string>
+    <string name="tab_text_2">Następne dni</string>
+    <string name="tab_text_3">Jutro</string>
+    <string name="today">Dziś</string>
+    <string name="tomorrow">Jutro</string>
+    <string name="units_imperial">Jednostki imperialne: °F, mph, 12h</string>
+    <string name="units_metric">Jednostki metryczne: °C, km/h, 24h</string>
+    <string name="units_metric_or_imperial">Jednostki: Metryczne lub imperialne</string>
+    <string name="version">versja</string>
+    <string name="view_description">Opis działania aplikacji</string>
+    <string name="weating_for_gps_sygnal">Oczekiwanie na sygnał GPS ...</string>
+    <string name="wind">Wiatr:</string>
+    <string name="about">O aplikacji</string>
+    <string name="application_developer">O autorze</string>
+    <string name="infoAppDescription">Autor aplikacji: \n\nwww.wolfmobileapps.com</string>
+</resources>
