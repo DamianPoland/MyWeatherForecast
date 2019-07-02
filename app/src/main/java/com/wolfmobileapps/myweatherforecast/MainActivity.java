@@ -25,6 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -48,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public static final String SHARED_PREFERENCES_WEATHER_5_DAYS = "Shared Pref Weather 5 Days";
     public static final String KEY_SHARED_PREFERENCES_CITY_LATITUDE = "Shared Pref city latitude";
     public static final String KEY_SHARED_PREFERENCES_CITY_LONGITUDE = "Shared Pref city longitude";
+    public static final String KEY_FOR_SHARED_PREF_SWITCH_CITY = "switchModeCity";
+    public static final String KEY_FOR_SHARED_PREF_SWITCH_CITY_NAME = "switchModeCityName";
+    public static final String KEY_FOR_SHARED_PREF_SWITCH_CITY_AND_COUNTRY_NAME = "switchModeCityAndCountryName";
+
 
     // stała do permissions
     public static final int PERMISSION_ALL = 101;
@@ -88,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         //tworzenie shared preferences
         shar = getSharedPreferences(SHARED_PREFERENCES_NAME, MODE_PRIVATE);
 
+
         //ustawienie napisu że czeka na gps za pierwszym razem
         if (shar.getString(SHARED_PREFERENCES_WEATHER_TODAY, "empty").equals("empty")) {
             textViewWeatingForGPS.setVisibility(View.VISIBLE);
@@ -126,6 +132,16 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         if ((shar.getString(SHARED_PREFERENCES_WEATHER_TODAY, "").equals("")) && (hasPermissions(MainActivity.this, permissions))) {
             makeUrlForDownloadWeather();
         }
+        // wyłaczenie czekania na gps jeśli jest podane miasto konkretne
+        if (!shar.getBoolean(KEY_FOR_SHARED_PREF_SWITCH_CITY,true)){
+            //wyłaczenie text view z weating for gps sygnal po pierwszym uruchomieniu
+            textViewWeatingForGPS.setVisibility(View.GONE);
+            progressBarWeatingForGPS.setVisibility(View.GONE);
+        }else{
+            textViewWeatingForGPS.setVisibility(View.VISIBLE);
+            progressBarWeatingForGPS.setVisibility(View.VISIBLE);
+
+        }
     }
 
     @Override
@@ -154,13 +170,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             return;
         }
         // sprawdzenie czy GPS jest włączony
-        if (!checkEnabledGPS()) {
-            Toast.makeText(MainActivity.this, getResources().getString(R.string.disabled_gps), Toast.LENGTH_LONG).show();
-            //ustawienie textu gdy nie ma włączonego gps z pierwszym razem
-            textViewWeatingForGPS.setText("");
-            textViewWeatingForGPS.setText(getResources().getString(R.string.weating_for_gps_sygnal));
-            return;
-        }
+//        if (!checkEnabledGPS()) {
+//            Toast.makeText(MainActivity.this, getResources().getString(R.string.disabled_gps), Toast.LENGTH_LONG).show();
+//            //ustawienie textu gdy nie ma włączonego gps z pierwszym razem
+//            textViewWeatingForGPS.setText("");
+//            textViewWeatingForGPS.setText(getResources().getString(R.string.weating_for_gps_sygnal));
+//        }
 
         //ustawienie textu gdy szyka gps za pierwszym razem - potem robi go visibility gone on LocationChanged i go nie widać
         textViewWeatingForGPS.setText("");
@@ -324,6 +339,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     @Override
     public void onLocationChanged(Location location) {
+
+        // jeśli jest włączone znajdowanie po podanej nazwie miast  czyli switch w ustawieniach jest wyłączony to nie będzie zmieniał położenia, w innym wypadku będzie sczytywał wg gps
+        if (!shar.getBoolean(KEY_FOR_SHARED_PREF_SWITCH_CITY, true)) {
+            Log.d(TAG, "onLocationChanged: return");
+            return;
+        }
         String lat = "" + location.getLatitude();
         String lng = "" + location.getLongitude();
         editor = shar.edit();

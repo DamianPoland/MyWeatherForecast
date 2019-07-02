@@ -11,7 +11,7 @@
     <string name="next_days_temperature">Temperatura w następnych dniach</string>
     <string name="no_internet_connection">Brak połączenia internetowego</string>
     <string name="permission_not_accepted">Pozwolenia nie zaakceptowane</string>
-    <string name="permissions_not_accepted_view">Bez zaakceptowania pozwoleń aplikacja nie będzie działać. Włącz aplikacje ponownie i zaakceptuj pozwolenia.</string>
+    <string name="permissions_not_accepted_view">Bez zaakceptowania pozwoleń aplikacja nie będzie działać.</string>
     <string name="pressure">Ciśnienie</string>
     <string name="refresh_menu">Odśwież</string>
     <string name="save_city_name">Zapisz</string>
@@ -33,4 +33,7 @@
     <string name="about">O aplikacji</string>
     <string name="application_developer">O autorze</string>
     <string name="infoAppDescription">Autor aplikacji: \n\nwww.wolfmobileapps.com</string>
+    <string name="NotFound">Nie znaleziono podanego miasta</string>
+    <string name="use_gps_sygnal">Lokalizacja wg GPS</string>
+    <string name="write_city_name_to_search">Wpisz miasto</string>
 </resources>

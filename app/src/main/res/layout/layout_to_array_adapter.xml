@@ -69,7 +69,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/colorWhite"
                 android:paddingBottom="8dp"
                 app:layout_constraintStart_toStartOf="@+id/imageView5Days"

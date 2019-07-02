@@ -185,7 +185,7 @@ public class FragmentToday extends Fragment {
         dataSet.setValueTextColor(Color.WHITE);
         LineData lineData = new LineData(dataSet);
         lineChart.setData(lineData);
-        lineChart.setVisibleXRangeMaximum(15); //ustawia ile ma być widocznych maxymalnie punktów na początku
+        lineChart.setVisibleXRangeMaximum(10); //ustawia ile ma być widocznych maxymalnie punktów na początku
         lineChart.setExtraOffsets(10,0,0,0); // odsuniecie wykresu od każdej strony jeśli np napisy wchodzą
         lineChart.setBackgroundColor(Color.BLUE); //ustawienie koloru tła
         lineChart.getAxisRight().setEnabled(false); //wyłączenie prawej osi Y

@@ -30,7 +30,7 @@
     <string name="place_manual" translatable="false">Place: chose MANUAL</string>
     <string name="place_auto" translatable="false">Place: chose AUTO</string>
     <string name="you_chose" translatable="false">You choose: </string>
-    <string name="permissions_not_accepted_view">Without accepted permissions app will not work! Try again open app and accept permissions.</string>
+    <string name="permissions_not_accepted_view">Without accepted permissions app will not work!</string>
     <string name="no_internet_connection">No internet connection</string>
     <string name="next_days_temperature">Next Days Temperature</string>
     <string name="error_not_respond">Can not refresh data. Please try again later.</string>
@@ -99,6 +99,11 @@ You may obtain a copy of the License at \n\n    http://www.apache.org/licenses/L
 distributed under the License is distributed on an "AS IS" BASIS, \nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. \nSee the License for the specific language governing permissions and
 limitations under the License.</string>
 
+
+    // versjon with city search
+    <string name="NotFound">City not found</string>
+    <string name="use_gps_sygnal">Use GPS sygnal</string>
+    <string name="write_city_name_to_search">Write city name</string>
 
 
 </resources>
