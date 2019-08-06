@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public static final String KEY_FOR_SHARED_PREF_SWITCH_CITY = "switchModeCity";
     public static final String KEY_FOR_SHARED_PREF_SWITCH_CITY_NAME = "switchModeCityName";
     public static final String KEY_FOR_SHARED_PREF_SWITCH_CITY_AND_COUNTRY_NAME = "switchModeCityAndCountryName";
+    public static final String KEY_FOR_SHARED_PREF_GOOGLE_PAY = "KeyForGooglePay";
 
 
     // stała do permissions
@@ -103,6 +104,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         //ustawienie widoczności dla menu options
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //zmiana nazwy apki gdy zapłacono przez google pay
+        if (shar.getBoolean(KEY_FOR_SHARED_PREF_GOOGLE_PAY,false)){
+            String aplicationName = this.getResources().getString(R.string.app_name);
+            this.setTitle(aplicationName + "- PRO");
+        }
 
         // stringi w razie czego do sprawdzenia  i wyświetlenia na tex view
 //        String url = "https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json"; // przykładowy z jsonem

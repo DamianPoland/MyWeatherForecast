@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_FOR_SHARED_PREF_SWITCH_CITY;
+import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_FOR_SHARED_PREF_SWITCH_CITY_AND_COUNTRY_NAME;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.SHARED_PREFERENCES_NAME;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.SHARED_PREFERENCES_WEATHER_5_DAYS;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.SHARED_PREFERENCES_WEATHER_TODAY;
@@ -273,6 +275,9 @@ public class FragmentToday extends Fragment {
 
             //pobranie nazwy miasta i zapisaniedo shared pref
             cityName = jsonObject.getString("name");
+            if (!shar.getBoolean(KEY_FOR_SHARED_PREF_SWITCH_CITY, false)){
+                cityName = shar.getString(KEY_FOR_SHARED_PREF_SWITCH_CITY_AND_COUNTRY_NAME, "none");
+            }
             editor = shar.edit();
             editor.putString(SHARED_PREFERENCES_CITY_NAME, cityName);
             editor.apply();

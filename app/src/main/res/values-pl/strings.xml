@@ -36,4 +36,6 @@
     <string name="NotFound">Nie znaleziono podanego miasta</string>
     <string name="use_gps_sygnal">Lokalizacja wg GPS</string>
     <string name="write_city_name_to_search">Wpisz miasto</string>
+    <string name="donation_for_developer">Przekaż darowiznę 1$</string>
+    <string name="donations">Wsparcie</string>
 </resources>

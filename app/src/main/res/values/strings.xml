@@ -104,6 +104,9 @@ limitations under the License.</string>
     <string name="NotFound">City not found</string>
     <string name="use_gps_sygnal">Use GPS sygnal</string>
     <string name="write_city_name_to_search">Write city name</string>
+    <string name="donations">Donations</string>
+    <string name="donation_for_developer">Give a donation of 1$</string>
+    <string name="successfully_received_payment">Successfully received payment</string>
 
 
 </resources>
