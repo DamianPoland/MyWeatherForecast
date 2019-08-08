@@ -1,16 +1,15 @@
 package com.wolfmobileapps.myweatherforecast.ui.main;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.wolfmobileapps.myweatherforecast.Fragment5days;
 import com.wolfmobileapps.myweatherforecast.FragmentToday;
-import com.wolfmobileapps.myweatherforecast.FragmentTomorrow;
 import com.wolfmobileapps.myweatherforecast.R;
 
 /**

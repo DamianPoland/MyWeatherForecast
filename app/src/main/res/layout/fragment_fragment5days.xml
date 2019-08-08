@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".Fragment5days"
     android:id="@+id/fragment5days"
-    android:background="@color/colorWhite">
+    android:background="@color/colorPrimary">
 
 
     <ListView
         android:id="@+id/listViewWeatherItems"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"/>
 </FrameLayout>

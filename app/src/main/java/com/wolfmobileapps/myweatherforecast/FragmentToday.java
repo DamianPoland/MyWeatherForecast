@@ -3,7 +3,7 @@ package com.wolfmobileapps.myweatherforecast;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +20,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.google.android.material.appbar.AppBarLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,7 +62,7 @@ public class FragmentToday extends Fragment {
     private TextView textViewSunSet;
     private ImageView imageViewSkyIcon;
     private ScrollView scrollViewForColourChange;
-    private android.support.design.widget.AppBarLayout widgetAppBarLayout;
+    private AppBarLayout widgetAppBarLayout;
     private LineChart lineChart;
 
     //dane z JsonObject

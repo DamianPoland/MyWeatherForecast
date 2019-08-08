@@ -4,7 +4,7 @@ package com.wolfmobileapps.myweatherforecast;
 import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +15,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -24,6 +27,7 @@ import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_FOR_SHARED_P
 import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_SHARED_PREFERENCES_CITY_LATITUDE;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_SHARED_PREFERENCES_CITY_LONGITUDE;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.SHARED_PREFERENCES_NAME;
+import static com.wolfmobileapps.myweatherforecast.MainActivity.advertisementIntedidtialID;
 
 public class SettingsActivity extends AppCompatActivity {
 

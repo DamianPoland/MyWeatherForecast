@@ -11,12 +11,20 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +32,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -71,6 +80,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     //do lokalizacji
     private LocationManager locationManager;
 
+    //do reklam
+    private InterstitialAd mInterstitialAd;
+    public static final String advertisementIntedidtialID = "ca-app-pub-1490567689734833/3701270854"; //id reklamy na cały ekran
+    private boolean shouldLoadAds; // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,12 +120,49 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         setSupportActionBar(toolbar);
 
         //zmiana nazwy apki gdy zapłacono przez google pay
-        if (shar.getBoolean(KEY_FOR_SHARED_PREF_GOOGLE_PAY,false)){
+        if (shar.getBoolean(KEY_FOR_SHARED_PREF_GOOGLE_PAY, false)) {
             String aplicationName = this.getResources().getString(R.string.app_name);
             this.setTitle(aplicationName + "- PRO");
         }
 
-        // stringi w razie czego do sprawdzenia  i wyświetlenia na tex view
+        // do pokazania reklamy na cały ekran ( ładowanie reklam na cały ekran też jest dodane w przyciskach menu)
+        MobileAds.initialize(this); //inicjalizacja reklam potrzebna tylko raz
+        mInterstitialAd = new InterstitialAd(this); // instancja do danej reklamy
+        mInterstitialAd.setAdUnitId(advertisementIntedidtialID); //wpisać iD danej reklamy czyli identyfikator jednostki reklamowej wzięty zz AdMOB
+        mInterstitialAd.loadAd(new AdRequest.Builder().build()); // ładuje reklamę to chwile potrwa więc odrazu może nie pokazać bo nie bęszie załadowana
+        mInterstitialAd.setAdListener(new AdListener() {// dodaje listenera do pokazywania reklam jak np się załaduje reklama i mozna ustawić też inne rzeczy że się wyświetla ale są bez sensu
+            @Override
+            public void onAdLoaded() {
+                if (shouldLoadAds) { // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
+                    mInterstitialAd.show(); //pokazuje reklamę
+                }
+            }
+            @Override
+            public void onAdLeftApplication() { //jeśli error to 3 to nie ma zasobów reklamowych
+                shouldLoadAds = false; // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) { //jeśli error to 3 to nie ma zasobów reklamowych
+                Log.d(TAG, "onAdFailedToLoad reklama na cały ekran: __________ errorCode: " + errorCode);
+            }
+        });
+
+        // do pokazywania reklamy na dole ekranu
+        AdView mAdView;
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.d(TAG, "onAdFailedToLoad banner: __________ errorCode: " + errorCode);
+
+            }
+        });
+
+
+        // stringi323 w razie czego do sprawdzenia  i wyświetlenia na tex view
 //        String url = "https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json"; // przykładowy z jsonem
 //        String url = "http://api.openweathermap.org/data/2.5/weather?q=London&APPID=25af582c6ef05f38c33a169a50a70ec5"; // przykładowy z OpenWeatherMap
     }
@@ -121,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         super.onStart();
         // przy każdym otwarciu danego activity będzie pobierał z neta jsona aktualnego z pogadami
         makeUrlForDownloadWeather();
+
 
         //właczeni location managera gdy jest z powrotem z background
         if (locationManager != null) {
@@ -132,23 +184,30 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         }
     }
 
+
     //pobranie jsonobject przy pierwszym uruchomieniu
     @Override
     protected void onResume() {
+        shouldLoadAds = true; // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
         super.onResume();
         if ((shar.getString(SHARED_PREFERENCES_WEATHER_TODAY, "").equals("")) && (hasPermissions(MainActivity.this, permissions))) {
             makeUrlForDownloadWeather();
         }
         // wyłaczenie czekania na gps jeśli jest podane miasto konkretne
-        if (!shar.getBoolean(KEY_FOR_SHARED_PREF_SWITCH_CITY,true)){
+        if (!shar.getBoolean(KEY_FOR_SHARED_PREF_SWITCH_CITY, true)) {
             //wyłaczenie text view z weating for gps sygnal po pierwszym uruchomieniu
             textViewWeatingForGPS.setVisibility(View.GONE);
             progressBarWeatingForGPS.setVisibility(View.GONE);
-        }else{
+        } else {
             textViewWeatingForGPS.setVisibility(View.VISIBLE);
             progressBarWeatingForGPS.setVisibility(View.VISIBLE);
-
         }
+    }
+
+    @Override
+    protected void onPause() {
+        shouldLoadAds = false; // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
+        super.onPause();
     }
 
     @Override
@@ -302,12 +361,24 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menuSettings:
+
+                //ładuje reklamę
+                mInterstitialAd.loadAd(new AdRequest.Builder().build()); // ładuje reklamę to chwile potrwa więc odrazu może nie pokazać bo nie bęszie załadowana
+
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 break;
             case R.id.menuInfo:
+
+                //ładuje reklamę
+                mInterstitialAd.loadAd(new AdRequest.Builder().build()); // ładuje reklamę to chwile potrwa więc odrazu może nie pokazać bo nie bęszie załadowana
+
                 startActivity(new Intent(MainActivity.this, InfoActivity.class));
                 break;
             case R.id.menuRefresh:
+
+                //ładuje reklamę
+                mInterstitialAd.loadAd(new AdRequest.Builder().build()); // ładuje reklamę to chwile potrwa więc odrazu może nie pokazać bo nie bęszie załadowana
+
                 makeUrlForDownloadWeather();
                 break;
         }

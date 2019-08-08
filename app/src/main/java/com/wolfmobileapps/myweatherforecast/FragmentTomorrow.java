@@ -3,7 +3,7 @@ package com.wolfmobileapps.myweatherforecast;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.google.android.material.appbar.AppBarLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +47,7 @@ public class FragmentTomorrow extends Fragment {
     private TextView textViewPressureTomorrow;
     private ImageView imageViewSkyIconTomorrow;
     private ScrollView scrollViewForColourChangeTomorrow;
-    private android.support.design.widget.AppBarLayout widgetAppBarLayoutTomorrow;
+    private AppBarLayout widgetAppBarLayoutTomorrow;
 
     //dane z JsonObject
     private String mainTomorrow; //śnieg deszcz chmury itd

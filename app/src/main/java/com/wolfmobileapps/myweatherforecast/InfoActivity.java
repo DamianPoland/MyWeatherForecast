@@ -1,41 +1,21 @@
 package com.wolfmobileapps.myweatherforecast;
 
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.wallet.AutoResolveHelper;
-import com.google.android.gms.wallet.IsReadyToPayRequest;
-import com.google.android.gms.wallet.PaymentData;
-import com.google.android.gms.wallet.PaymentDataRequest;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.wallet.PaymentsClient;
-import com.google.android.gms.wallet.Wallet;
-import com.google.android.gms.wallet.WalletConstants;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Optional;
-
-import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_FOR_SHARED_PREF_GOOGLE_PAY;
-import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_FOR_SHARED_PREF_SWITCH_CITY_AND_COUNTRY_NAME;
-import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_FOR_SHARED_PREF_SWITCH_CITY_NAME;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.SHARED_PREFERENCES_NAME;
+import static com.wolfmobileapps.myweatherforecast.MainActivity.advertisementIntedidtialID;
 
 public class InfoActivity extends AppCompatActivity {
     private static final String TAG = "InfoActivity";
@@ -130,6 +110,7 @@ public class InfoActivity extends AppCompatActivity {
 
             }
         });
+
 
         // do płatności GooglePay
 //        mPaymentsClient =

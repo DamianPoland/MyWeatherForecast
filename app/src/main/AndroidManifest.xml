@@ -18,6 +18,10 @@
         android:usesCleartextTraffic="true">
 
         <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1490567689734833~6483524471"/>
+
+        <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
 
