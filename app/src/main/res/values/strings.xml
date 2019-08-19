@@ -36,9 +36,6 @@
     <string name="error_not_respond">Can not refresh data. Please try again later.</string>
 
 
-
-
-
     <string name="privacy_policy_description" translatable="false">Wolf Mobile Apps built the app as a Free app. This SERVICE is provided by Wolf Mobile Apps at no cost and is intended for use as is.
         \n\nThis page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.
         \n\nIf you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.
@@ -106,7 +103,8 @@ limitations under the License.</string>
     <string name="write_city_name_to_search">Write city name</string>
     <string name="donations">Donations</string>
     <string name="donation_for_developer">Give a donation of 1$</string>
-    <string name="successfully_received_payment">Successfully received payment</string>
+    <string name="successfully_received_payment">Successfully received payment.</string>
+    <string name="loading">Loading...</string>
 
 
 </resources>

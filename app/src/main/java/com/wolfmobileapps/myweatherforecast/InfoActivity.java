@@ -10,12 +10,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.wallet.PaymentsClient;
 
 import static com.wolfmobileapps.myweatherforecast.MainActivity.SHARED_PREFERENCES_NAME;
-import static com.wolfmobileapps.myweatherforecast.MainActivity.advertisementIntedidtialID;
+
 
 public class InfoActivity extends AppCompatActivity {
     private static final String TAG = "InfoActivity";

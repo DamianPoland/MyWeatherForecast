@@ -14,10 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -27,7 +23,6 @@ import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_FOR_SHARED_P
 import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_SHARED_PREFERENCES_CITY_LATITUDE;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_SHARED_PREFERENCES_CITY_LONGITUDE;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.SHARED_PREFERENCES_NAME;
-import static com.wolfmobileapps.myweatherforecast.MainActivity.advertisementIntedidtialID;
 
 public class SettingsActivity extends AppCompatActivity {
 

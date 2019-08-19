@@ -38,4 +38,6 @@
     <string name="write_city_name_to_search">Wpisz miasto</string>
     <string name="donation_for_developer">Przekaż darowiznę 1$</string>
     <string name="donations">Wsparcie</string>
+    <string name="successfully_received_payment">Płatność zakończona powodzeniem.</string>
+    <string name="loading">Ładowanie...</string>
 </resources>
