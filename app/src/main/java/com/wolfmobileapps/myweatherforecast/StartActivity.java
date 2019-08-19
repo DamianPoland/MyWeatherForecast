@@ -33,21 +33,37 @@ public class StartActivity extends AppCompatActivity {
         mInterstitialAd.setAdListener(new AdListener() {// dodaje listenera do pokazywania reklam jak np się załaduje reklama i mozna ustawić też inne rzeczy że się wyświetla ale są bez sensu
             @Override
             public void onAdLoaded() {
-                if (shouldLoadAds) { // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
+                if (shouldLoadAds) { // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds patrz niżej
                     mInterstitialAd.show(); //pokazuje reklamę
+                } else {
+                    startActivity(new Intent(StartActivity.this, MainActivity.class)); //ładuje activity
                 }
-                startActivity(new Intent(StartActivity.this, MainActivity.class)); //ładuje activity jeśli załaduje reklamę
             }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) { //jeśli error jest 3 to nie ma zasobów reklamowych
+                Log.d(TAG, "onAdFailedToLoad: __________ errorCode: " + errorCode);
+                startActivity(new Intent(StartActivity.this, MainActivity.class)); //ładuje activity jeśli nie ma reklamy
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when the ad is displayed.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
             @Override
             public void onAdLeftApplication() { //jeśli error to 3 to nie ma zasobów reklamowych
                 shouldLoadAds = false; // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
             }
 
             @Override
-            public void onAdFailedToLoad(int errorCode) { //jeśli error to 3 to nie ma zasobów reklamowych
-                Log.d(TAG, "onAdFailedToLoad reklama na cały ekran: __________ errorCode: " + errorCode);
-                startActivity(new Intent(StartActivity.this, MainActivity.class)); //ładuje activity jeśli nie ma reklamy
-
+            public void onAdClosed() {
+                startActivity(new Intent(StartActivity.this, MainActivity.class)); //ładuje activity
             }
         });
     }
