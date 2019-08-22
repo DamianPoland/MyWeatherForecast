@@ -3,21 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menuSettings"
-        android:icon="@drawable/ic_settings_black_24dp"
-        android:title="@string/settings"
-        android:visible="true" />
-
-    <item
-        android:id="@+id/menuInfo"
-        android:icon="@drawable/ic_info_outline_black_24dp"
-        android:title="@string/about"
-        android:visible="true" />
-
-    <item
         android:id="@+id/menuRefresh"
         android:icon="@drawable/ic_refresh_black_24dp"
         android:title="@string/refresh_menu"
         android:visible="true"
         app:showAsAction="ifRoom"/>
+
+
+
+    <item
+        android:id="@+id/menuInfo"
+        android:icon="@drawable/ic_info_outline_white_24dp"
+        android:title="@string/about"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menuSettings"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/settings"
+        android:visible="true"
+        app:showAsAction="ifRoom"/>
+
+
 </menu>

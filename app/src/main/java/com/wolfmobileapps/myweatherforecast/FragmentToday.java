@@ -276,7 +276,7 @@ public class FragmentToday extends Fragment {
 
             //pobranie nazwy miasta i zapisaniedo shared pref
             cityName = jsonObject.getString("name");
-            if (!shar.getBoolean(KEY_FOR_SHARED_PREF_SWITCH_CITY, false)){
+            if (!shar.getBoolean(KEY_FOR_SHARED_PREF_SWITCH_CITY, true)){
                 cityName = shar.getString(KEY_FOR_SHARED_PREF_SWITCH_CITY_AND_COUNTRY_NAME, "none");
             }
             editor = shar.edit();
