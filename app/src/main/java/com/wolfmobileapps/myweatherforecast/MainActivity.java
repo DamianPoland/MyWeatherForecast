@@ -15,6 +15,8 @@ import android.os.Bundle;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.core.app.ActivityCompat;
@@ -78,6 +80,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     //do lokalizacji
     private LocationManager locationManager;
 
+    //do reklam
+    public InterstitialAd mInterstitialAd;
+    public static final String advertisementIntedidtialID = "ca-app-pub-1490567689734833/3701270854"; //id reklamy na cały ekran ( moja: ca-app-pub-1490567689734833/3701270854) (testowa ca-app-pub-3940256099942544/1033173712)
+    public boolean shouldLoadAds; // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,6 +139,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             }
         });
 
+        // do pokazania reklamy na cały ekran
+        MobileAds.initialize(this); //inicjalizacja reklam potrzebna tylko raz
+        mInterstitialAd = new InterstitialAd(this); // instancja do danej reklamy
+        mInterstitialAd.setAdUnitId(advertisementIntedidtialID); //wpisać iD danej reklamy czyli identyfikator jednostki reklamowej wzięty zz AdMOB
+        mInterstitialAd.loadAd(new AdRequest.Builder().build()); // ładuje reklamę to chwile potrwa więc odrazu może nie pokazać bo nie bęszie załadowana
+
 
         // stringi323 w razie czego do sprawdzenia  i wyświetlenia na tex view
 //        String url = "https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json"; // przykładowy z jsonem
@@ -158,6 +171,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     @Override
     protected void onResume() {
         super.onResume();
+
+        shouldLoadAds = true; // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
+        //do reklamy pełnoekranowej
+
         if ((shar.getString(SHARED_PREFERENCES_WEATHER_TODAY, "").equals("")) && (hasPermissions(MainActivity.this, permissions))) {
             makeUrlForDownloadWeather();
         }
@@ -182,6 +199,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             locationManager.removeUpdates(this);
             Log.d(TAG, "onStop: locationManager removedUpdates");
         }
+    }
+
+    @Override
+    protected void onPause() {
+        shouldLoadAds = false; // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds
+        super.onPause();
     }
 
 
@@ -329,6 +352,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                 startActivity(new Intent(MainActivity.this, InfoActivity.class));
                 break;
             case R.id.menuRefresh:
+
+                if (shouldLoadAds) { // żeby reklamy nie pokazywały się po wyłaczeniu aplikacji - tylko do intestitialAds patrz niżej
+                    mInterstitialAd.show(); //pokazuje reklamę
+                }
+                mInterstitialAd.loadAd(new AdRequest.Builder().build()); // ładuje reklamę to chwile potrwa więc odrazu może nie pokazać bo nie bęszie załadowana
+
                 makeUrlForDownloadWeather();
                 break;
         }

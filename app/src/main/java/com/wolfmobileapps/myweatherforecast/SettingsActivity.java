@@ -4,7 +4,9 @@ package com.wolfmobileapps.myweatherforecast;
 import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,6 +27,7 @@ import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_FOR_SHARED_P
 import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_SHARED_PREFERENCES_CITY_LATITUDE;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.KEY_SHARED_PREFERENCES_CITY_LONGITUDE;
 import static com.wolfmobileapps.myweatherforecast.MainActivity.SHARED_PREFERENCES_NAME;
+import static com.wolfmobileapps.myweatherforecast.MainActivity.advertisementIntedidtialID;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -42,6 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button buttonCitySearch;
     private ProgressBar progressBarSearch;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
         switchUnits = findViewById(R.id.switchUnits);
         editTextCity = findViewById(R.id.editTextCity);
         textViewCityAdded = findViewById(R.id.textViewCityAdded);
-        switchCity =findViewById(R.id.switchCity);
+        switchCity = findViewById(R.id.switchCity);
         buttonCitySearch = findViewById(R.id.buttonCitySearch);
         progressBarSearch = findViewById(R.id.progressBarSearch);
 
@@ -127,7 +133,7 @@ public class SettingsActivity extends AppCompatActivity {
                 //wywołanie metody do pobrania koordynatów danego miasta
                 String cityAndCountryName = getCityCoordinates(cityName);
                 // jeśli nie znalazł miasta to ustawi text że nie ma takiego miasta
-                if (cityAndCountryName.equals(getResources().getString(R.string.NotFound))){
+                if (cityAndCountryName.equals(getResources().getString(R.string.NotFound))) {
                     textViewCityAdded.setText(getResources().getString(R.string.NotFound));
                     // wyłączenie progres bara
                     progressBarSearch.setVisibility(View.GONE);
@@ -151,17 +157,17 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     //pobranie przez geocoodera lat i lng z nazwy miasta
-    private String getCityCoordinates(String cityName){
+    private String getCityCoordinates(String cityName) {
 
         // włączenie progres bara
         progressBarSearch.setVisibility(View.VISIBLE);
 
         //uruchomienie geocodera
-        if(Geocoder.isPresent()){
+        if (Geocoder.isPresent()) {
             try {
                 Geocoder gc = new Geocoder(this);
-                List<Address> addresses= gc.getFromLocationName(cityName, 1); // get the found Address Objects
-                if (addresses.size()==0){
+                List<Address> addresses = gc.getFromLocationName(cityName, 1); // get the found Address Objects
+                if (addresses.size() == 0) {
                     return getResources().getString(R.string.NotFound);
                 }
                 Address address = addresses.get(0);
@@ -181,7 +187,7 @@ public class SettingsActivity extends AppCompatActivity {
                 return cityAndCountryName;
             } catch (IOException e) {
                 // handle the exception
-            } catch (Exception e){ //if wyżej załatwia sprawę ale to d;a bezpieczeństwaw dodano
+            } catch (Exception e) { //if wyżej załatwia sprawę ale to d;a bezpieczeństwaw dodano
                 Log.d(TAG, "getCityCoordinates: exception catched");
             }
         }
@@ -190,5 +196,4 @@ public class SettingsActivity extends AppCompatActivity {
         progressBarSearch.setVisibility(View.GONE);
         return getResources().getString(R.string.NotFound);
     }
-
 }
